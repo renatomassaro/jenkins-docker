@@ -2,6 +2,13 @@
 
 set -e
 
+# Install arcanist so Phabricator-Jenkins plugin works fine
+mkdir -p /phabricator && cd /phabricator
+git clone https://github.com/phacility/libphutil.git
+git clone https://github.com/phacility/arcanist.git
+ln -s /phabricator/arcanist/bin/arc /usr/bin/arc
+cd -
+
 # Copy files from /usr/share/jenkins/ref into /var/jenkins_home
 # So the initial JENKINS-HOME is set with expected content.
 # Don't override, as this is just a reference setup, and use from UI
